@@ -39,7 +39,8 @@ exports.register = async (req, res) => {
         const token = await newUser.generateToken();
 
         const options = {
-            expiresIn: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000)
+            expiresIn: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+            httpOnly: true
         };
 
         res.cookie('token', token, options)
@@ -89,6 +90,7 @@ exports.login = async (req, res) => {
 
         const options = {
             expiresIn: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+            httpOnly: true
         }
 
         res
